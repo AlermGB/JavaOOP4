@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Team <T extends Person> implements Iterable<T>{
+public class Team<T extends Person> implements Iterable<T> {
     List<T> persons = new ArrayList<>();
 
     @Override
@@ -21,9 +21,10 @@ public class Team <T extends Person> implements Iterable<T>{
                 "persons=" + persons +
                 '}';
     }
-    public int maxRange(){
+
+    public int maxRange() {
         int max = 0;
-        for(T person:this) {
+        for (T person : this) {
             if (person instanceof Archer) {
                 Archer archer = (Archer) person;
                 if (archer.getRange() > max) {
@@ -33,4 +34,27 @@ public class Team <T extends Person> implements Iterable<T>{
         }
         return max;
     }
+
+    public int maxArmor() {
+        int max = 0;
+        for (T person : this) {
+            Warrior soldier = (Warrior) person;
+            if (soldier.getArmor() > max) {
+                max = soldier.getArmor();
+            }
+        }
+        return max;
+    }
+
+    public int minArmor() {
+        int min = this.maxArmor();
+        for (T person : this) {
+            Warrior soldier = (Warrior) person;
+            if (soldier.getArmor() < min) {
+                min = soldier.getArmor();
+            }
+        }
+        return min;
+    }
+
 }

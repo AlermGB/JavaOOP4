@@ -1,6 +1,6 @@
-public class Knight extends Warrior<Knife> {
-    public Knight(String name, int hp, Knife weapon) {
-        super(name, hp, weapon);
+public class Knight extends Warrior<Knife, Armor> {
+    public Knight(String name, int hp, Knife weapon, Armor shield) {
+        super(name, hp, weapon, shield);
     }
 
     @Override
